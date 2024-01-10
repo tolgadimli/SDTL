@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 import torch.optim as optim
 import torch.multiprocessing as mp
 from torchvision import datasets, transforms
-from DistOptmizers import CommOptimizer
-from DistOptmizers import to_dist_train_loader, sync_model_params_and_buffers
+from DistOptimizers import CommOptimizer
+from DistOptimizers import to_dist_train_loader, sync_model_params_and_buffers
 
 class NeuralNetwork(nn.Module):
     def __init__(self):
