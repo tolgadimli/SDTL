@@ -126,7 +126,6 @@ class LSGD(DistOptimizer):
                 with torch.no_grad():
                     cur_step = param_tensor[counter:counter+param.data.numel()] - param.data.view(-1) # delta_x = learning rate * grad
                     group_loss += (cur_step * param.grad.view(-1)).sum().item() # f'(x) * delta_x
-                    print(group_loss)
                 param_tensor[counter:counter+param.numel()].copy_(param.view(-1))
                 counter += param.numel()
             loss.mul_(0.9).add_(group_loss, alpha=0.1)

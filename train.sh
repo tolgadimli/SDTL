@@ -16,7 +16,7 @@ dist_opt="LSGD";
 export_dir="$dist_opt-$dataset-$model-node-$print_node_rank-of-$num_nodes-$DATE"
 exp_name="$dist_opt-comm=$comm-c=$c-p=$p-seed=$seed"
 echo "STARTING $exp_name"
-python codes/main.py --ip_address 128.238.9.108  --node_gpus 4 --num_nodes $num_nodes --node_rank $node_rank \
+python codes/main.py --ip_address master.ip.address --node_gpus 4 --num_nodes $num_nodes --node_rank $node_rank \
     --dist_optim_name $dist_opt  --export_dir $export_dir  --experiment_name $exp_name  \
     --dataset $dataset --model $model  --bs $bs --lr $lr --wd $wd --mom $mom \
     --scheduler_gamma 0.1 --scheduler_milestones '120,180' --epochs $epochs --seed $seed \
@@ -26,7 +26,7 @@ echo "FINISHING $exp_name"
 dist_opt="DataParallel"
 export_dir="$dist_opt-$dataset-$model-node-$print_node_rank-of-$num_nodes-$DATE"
 exp_name="$dist_opt-$dataset-$model-seed=$seed"
-python codes/main.py --ip_address 128.238.9.108  --node_gpus 4 --num_nodes $num_nodes --node_rank $node_rank \
+python codes/main.py --ip_address master.ip.address  --node_gpus 4 --num_nodes $num_nodes --node_rank $node_rank \
     --dist_optim_name $dist_opt  --export_dir $export_dir  --experiment_name $exp_name  \
     --dataset $dataset --model $model --epochs $epochs --bs $bs --lr $lr --wd $wd --mom $mom \
     --scheduler_gamma 0.1 --scheduler_milestones '120,180' --epochs $epochs --seed $seed 
